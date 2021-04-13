@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5JuQ2IEdMp3AAuzZiyDhdEIeth7G/1QwUbelkxm8T75FhgN9Vu9zFLgD7cql8NqP6F7ByUA7w6qAoIJ/ur65rA==",
+  "dgSpecHash": "cmH2a8esz7cLc22Gcdij/FIvXlDrf5mBhBhJJ2BStVoIOH16UdExh4cB9CHb4RZZ3ySNJYkXkXhVaeXjDC202A==",
   "success": true,
-  "projectFilePath": "/home/coder/OhEss-1/OhEss-1.csproj",
+  "projectFilePath": "/home/coder/OhEss-1/OhEss/OhEss.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/coder/OhEss-1/OhEss-1.csproj": {}
+    "/home/coder/OhEss-1/OhEss/OhEss.csproj": {}
   },
   "projects": {
-    "/home/coder/OhEss-1/OhEss-1.csproj": {
+    "/home/coder/OhEss-1/OhEss/OhEss.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/coder/OhEss-1/OhEss-1.csproj",
-        "projectName": "OhEss-1",
-        "projectPath": "/home/coder/OhEss-1/OhEss-1.csproj",
+        "projectUniqueName": "/home/coder/OhEss-1/OhEss/OhEss.csproj",
+        "projectName": "OhEss",
+        "projectPath": "/home/coder/OhEss-1/OhEss/OhEss.csproj",
         "packagesPath": "/home/coder/.nuget/packages/",
-        "outputPath": "/home/coder/OhEss-1/obj/",
+        "outputPath": "/home/coder/OhEss-1/OhEss/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/coder/.nuget/NuGet/NuGet.Config"
