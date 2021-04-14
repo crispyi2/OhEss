@@ -1,0 +1,10 @@
+{
+	"Apps": {
+		"SweetExplorer": {
+			"ID": 1,
+			"Identifier": "SweetExplorer",
+			"Description": "A file manager for OhEss",
+			"Type": "Gui"
+		}
+	}
+}
