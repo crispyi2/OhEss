@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/coder/OhEss-1/OhEss/OhEss.csproj": {}
+    "/workspace/OhEss/OhEss.csproj": {}
   },
   "projects": {
-    "/home/coder/OhEss-1/OhEss/OhEss.csproj": {
+    "/workspace/OhEss/OhEss.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/coder/OhEss-1/OhEss/OhEss.csproj",
+        "projectUniqueName": "/workspace/OhEss/OhEss.csproj",
         "projectName": "OhEss",
-        "projectPath": "/home/coder/OhEss-1/OhEss/OhEss.csproj",
-        "packagesPath": "/home/coder/.nuget/packages/",
-        "outputPath": "/home/coder/OhEss-1/OhEss/obj/",
+        "projectPath": "/workspace/OhEss/OhEss.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/workspace/OhEss/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/coder/.nuget/NuGet/NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
