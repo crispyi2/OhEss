@@ -1,0 +1,33 @@
+{
+    "System": {
+        "Boot": [
+            { "Notice": "DO NOT CHANGE ANYTHING HERE UNLESS YOU KNOW WHAT YOU ARE DOING!!!" },
+            { "BootLoaders": [{ "SweetLoader": { "var": { "Default": true } } }] },
+            { "Bios": [{ "SweetBios": { "var": { "Default": true } } }] }
+        ]
+    },
+    "users": {
+        "root": {
+            "WindowManagers": [{ "SweetWM": { "var": { "Default": true } } }],
+            "Launchers": [{ "SweetLauncher": { "var": { "Default": true } } }],
+            "Docks": [{ "SweetDoc": { "var": { "Default": true } } }],
+            "ThemeManager": [{ "SweetThemes": { "var": { "Default": true } } }],
+            "Themes": [{ "Sweet": { "var": { "Default": true } } }],
+            "Apps": [
+                { "Recycle": { "var": { "Whitelisted": true } } },
+                { "SweetShell": { "var": { "Whitelisted": true } } },
+                { "SweetExplorer": { "var": { "Whitelisted": true } } },
+                { "SweetPlayer": { "var": { "Whitelisted": true } } },
+                { "SweetPoint": { "var": { "Whitelisted": true } } },
+                { "SweetDocs": { "var": { "Whitelisted": true } } },
+                { "SweetSheets": { "var": { "Whitelisted": true } } },
+                { "Soda": { "var": { "Whitelisted": true } } },
+                { "Fizz": { "var": { "Whitelisted": true } } },
+                { "Pop": { "var": { "Whitelisted": true } } },
+                { "Sugar": { "var": { "Whitelisted": true } } },
+                { "Jam": { "var": { "Whitelisted": true } } }
+            ],
+            "AppGroups": [{ "SweeetOffice": { "var": {} } }]
+        }
+    }
+}
