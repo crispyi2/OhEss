@@ -8,9 +8,9 @@ namespace OhEss.Controllers
         // 
         // GET: /Accounts/
 
-        public string Index()
+        public IActionResult Index()
         {
-            return "This is the default page...";
+            return View();
         }
 
         // 
@@ -21,11 +21,11 @@ namespace OhEss.Controllers
             return "This is the Login action method...";
         }
 		// 
-        // GET: /Accounts/Signup/ 
+        // GET: /Accounts/Create/ 
 
-        public string Signup()
+        public string Create()
         {
-            return "This is the Signup action method...";
+            return "This is the action for Creating Accounts...";
         }
     }
 }

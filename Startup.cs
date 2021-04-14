@@ -1,3 +1,5 @@
+using OhEss.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,9 @@ namespace OhEss
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+			
+			services.AddDbContext<AccountData>(options =>
+            options.UseSqlite(Configuration.GetConnectionString("AccountData")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +55,7 @@ namespace OhEss
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Accounts}/{action=Index}/{id?}");
             });
         }
     }
