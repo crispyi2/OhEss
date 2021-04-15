@@ -1,0 +1,245 @@
+{
+	"Cur": [
+		{
+			// the name
+			"Default": {
+				// cropping
+				///////////
+				"Frame": [
+					{
+						"FrameSize": [width, height],
+						// how big the frame is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"FramePos": [x, y]
+						// the position of the frame
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+					}
+				],
+				// looks
+				////////
+				"Appearance": [
+					{
+						// how big or small the whole image is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Size": [width, height],
+						// how far it is from the system mouse
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Offset": [x, y],
+						"Animated": [bool, int]
+						// bool = if it's enabled
+						// int = how the frame size of the sprite on the spritesheet
+						////////////////////////////////////////////////////////////
+					}
+				]
+			},
+			"Pointer": {
+				// cropping
+				///////////
+				"Frame": [
+					{
+						"FrameSize": [width, height],
+						// how big the frame is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"FramePos": [x, y]
+						// the position of the frame
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+					}
+				],
+				// looks
+				////////
+				"Appearance": [
+					{
+						// how big or small the whole image is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Size": [width, height],
+						// how far it is from the system mouse
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Offset": [x, y],
+						"Animated": [bool, int]
+						// bool = if it's enabled
+						// int = how the frame size of the sprite on the spritesheet
+						////////////////////////////////////////////////////////////
+					}
+				]
+			},
+			"Drag": {
+				// cropping
+				///////////
+				"Frame": [
+					{
+						"FrameSize": [width, height],
+						// how big the frame is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"FramePos": [x, y]
+						// the position of the frame
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+					}
+				],
+				// looks
+				////////
+				"Appearance": [
+					{
+						// how big or small the whole image is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Size": [width, height],
+						// how far it is from the system mouse
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Offset": [x, y],
+						"Animated": [bool, int]
+						// bool = if it's enabled
+						// int = how the frame size of the sprite on the spritesheet
+						////////////////////////////////////////////////////////////
+					}
+				]
+			},
+			"Hand": {
+				// cropping
+				///////////
+				"Frame": [
+					{
+						"FrameSize": [width, height],
+						// how big the frame is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"FramePos": [x, y]
+						// the position of the frame
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+					}
+				],
+				// looks
+				////////
+				"Appearance": [
+					{
+						// how big or small the whole image is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Size": [width, height],
+						// how far it is from the system mouse
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Offset": [x, y],
+						"Animated": [bool, int]
+						// bool = if it's enabled
+						// int = how the frame size of the sprite on the spritesheet
+						////////////////////////////////////////////////////////////
+					}
+				]
+			},
+			"HandGrab": {
+				// cropping
+				///////////
+				"Frame": [
+					{
+						"FrameSize": [width, height],
+						// how big the frame is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"FramePos": [x, y]
+						// the position of the frame
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+					}
+				],
+				// looks
+				////////
+				"Appearance": [
+					{
+						// how big or small the whole image is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Size": [width, height],
+						// how far it is from the system mouse
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Offset": [x, y],
+						"Animated": [bool, int]
+						// bool = if it's enabled
+						// int = how the frame size of the sprite on the spritesheet
+						////////////////////////////////////////////////////////////
+					}
+				]
+			},
+			"Crosshair": {
+				// cropping
+				///////////
+				"Frame": [
+					{
+						"FrameSize": [width, height],
+						// how big the frame is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"FramePos": [x, y]
+						// the position of the frame
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+					}
+				],
+				// looks
+				////////
+				"Appearance": [
+					{
+						// how big or small the whole image is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Size": [width, height],
+						// how far it is from the system mouse
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Offset": [x, y],
+						"Animated": [bool, int]
+						// bool = if it's enabled
+						// int = how the frame size of the sprite on the spritesheet
+						////////////////////////////////////////////////////////////
+					}
+				]
+			},
+			"Loading": {
+				// cropping
+				///////////
+				"Frame": [
+					{
+						"FrameSize": [width, height],
+						// how big the frame is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"FramePos": [x, y]
+						// the position of the frame
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+					}
+				],
+				// looks
+				////////
+				"Appearance": [
+					{
+						// how big or small the whole image is
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Size": [width, height],
+						// how far it is from the system mouse
+						// leave null for the default values of the image
+						/////////////////////////////////////////////////
+						"Offset": [x, y],
+						"Animated": [bool, int]
+						// bool = if it's enabled
+						// int = how the frame size of the sprite on the spritesheet
+						////////////////////////////////////////////////////////////
+					}
+				]
+			}
+		}
+	]
+}
