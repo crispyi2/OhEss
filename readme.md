@@ -1,4 +1,6 @@
-dotnet tool install --global dotnet-ef
-dotnet tool install --global dotnet-aspnet-codegenerator
-dotnet ef migrations add InitialCreate
-dotnet ef database update
+## Info
+
+### Dont count on this os for security
+```
+cuz all the data is stored in a json file
+```
