@@ -1,0 +1,17 @@
+{
+	"Directories": {
+		"Config": ["Config/"],
+		"Controllers": ["Controllers/"],
+		"Models": ["Models/"],
+		"Views": ["Views/"]
+	},
+	"Config": {
+		"ConfigDir": ["Config"],
+		"ConfigFiles": {
+			"Settings": {
+				"fileName": ["Settings.json"],
+				"Alias": ["Settings"]
+			}
+		}
+	}
+}

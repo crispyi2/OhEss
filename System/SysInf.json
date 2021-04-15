@@ -1,7 +1,10 @@
 {
 	"System": {
 		"Boot": [
-			{ "Notice": "DO NOT CHANGE ANYTHING HERE UNLESS YOU KNOW WHAT YOU ARE DOING!!!" },
+			//////////////////////////////////////////////////////////////////////
+			//                               NOTICE...                          //
+			// DO NOT CHANGE ANYTHING HERE UNLESS YOU KNOW WHAT YOU ARE DOING!!!//
+			//////////////////////////////////////////////////////////////////////
 			{ "BootLoaders": [{ "SweetLoader": { "var": { "Default": true } } }] },
 			{ "Bios": [{ "SweetBios": { "var": { "Default": true } } }] }
 		]
