@@ -1,5 +1,6 @@
 using OhEss.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Razor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,9 @@ namespace OhEss
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Accounts}/{action=Index}/{id?}");
+				endpoints.MapControllerRoute(
+        			name: "Login",
+        			pattern: "{controller=Accounts}/{action=Login}/{id?}");
             });
         }
     }

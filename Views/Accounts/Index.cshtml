@@ -1,5 +1,27 @@
-@{ ViewData["Title"] = "Accounts"; Layout = "_AccountsLayout"; }
+@{ 
+	ViewData["Title"] = "login"; 
+	Layout = null;
+}
 
-<div class="text-center">
-    <h1 class="display-4">What Would You Like To Do</h1>
-</div>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="~/css/site.css" />
+	</head>
+	<body>
+		<div class="text-center">
+			<h1 class="display-4">What Would You Like To Do</h1>
+			<div id="log-in"><button id="LoginBtn" onclick="LoginClick()">Login</button></div>
+		</div>
+		<script src="~/lib/jquery/dist/jquery.min.js"></script>
+		<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="~/js/site.js" asp-append-version="true"></script>
+		<script>
+	function LoginClick() {
+        location.href = '@Url.Action("Login", "Accounts")';
+    }
+	</script>
+	</body>
+</html>

@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
+using Microsoft.Docs.Samples;
 
-namespace OhEss.Controllers
+namespace OhEss.Areas.Accounts.Controllers
 {
     public class AccountsController : Controller
     {
@@ -16,9 +17,9 @@ namespace OhEss.Controllers
         // 
         // GET: /Accounts/Login/ 
 
-        public string Login()
+        public IActionResult Login()
         {
-            return "This is the Login action method...";
+            return View("~/Views/Accounts/Login/Login.cshtml");
         }
 		// 
         // GET: /Accounts/Create/ 
@@ -27,5 +28,10 @@ namespace OhEss.Controllers
         {
             return "This is the action for Creating Accounts...";
         }
+		
+		public IActionResult LoginBtn()
+			{
+			return RedirectToAction("Login", "AccountsController");
+			}
     }
 }
