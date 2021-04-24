@@ -23,7 +23,7 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
-# Ignore uploaded files in development.
+# user files
 
 
 /public/assets
