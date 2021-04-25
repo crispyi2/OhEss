@@ -6,5 +6,6 @@
 		<registry filetype=".soda" full="sodafile" desc="fizzyfile build instructions"> </registry>
 		<registry filetype=".pop" full="pop excutable" desc="pop runtime executable"> </registry>
 		<registry filetype=".fizz" full="fizzyfile" desc="fizz installer archive"> </registry>
+		<registry filetype=".oeupd" full="OhEss update" desc="OhEss update files"> </registry>
     </mimetypes>
 </systemRegistry>
