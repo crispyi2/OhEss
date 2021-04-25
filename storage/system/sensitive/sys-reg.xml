@@ -1,6 +1,13 @@
 <systemRegistry>
     <mimetypes>
         <registry filetype=".txt" full="text" desc="text document"> </registry>
+		<registry filetype=".md" full="MarkDown" desc="markdown document"> </registry>
+		<registry filetype=".json" full="JavaScript Object Notation" desc="json document"> </registry>
+		<registry filetype=".xml" full="Extensible Markup Language" desc="xml document"> </registry>
+		<registry filetype=".js" full="JavaScript" desc="javascript code"> </registry>
+		<registry filetype=".html" full="HyperText Markup Language" desc="html code"> </registry>
+		<registry filetype=".htm" full="HyperText Markup Language" desc="html code"> </registry>
+		<registry filetype=".rb" full="ruby" desc="ruby code"> </registry>
 		<registry filetype=".zip" full="zip" desc="zip archive"> </registry>
 		<registry filetype=".rar" full="rar" desc="rar archive"> </registry>
 		<registry filetype=".soda" full="sodafile" desc="fizzyfile build instructions"> </registry>
