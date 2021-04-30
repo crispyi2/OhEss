@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :system, controller: 'controllers/system_controller'
+
+  root to: "system#index"
 end

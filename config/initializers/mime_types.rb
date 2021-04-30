@@ -3,5 +3,5 @@
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf
 
-Mime::Type.Register "application/zip", :fizz
-Mime::Type.Register "text/yaml", :pop
+Mime::Type.register "application/zip", :fizz
+Mime::Type.register "text/yaml", :pop
