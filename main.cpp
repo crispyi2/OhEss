@@ -14,6 +14,7 @@
 #include <emscripten.h>
 #include <SDL.h>
 #include <SDL_opengles2.h>
+#include "system_functions.h"
 
 // Emscripten requires to have full control over the main loop. We're going to store our SDL book-keeping variables globally.
 // Having a single function that acts as a loop prevents us to store state in the stack of said function. So we need some location for this.
@@ -147,25 +148,6 @@ static void main_loop(void* arg)
     static bool show_demo_window = false;
     static bool show_another_window = false;
     static bool show_welcome_window = true;
-
-    // load images
-
-/**
-*  // test image
-*
-*  int my_image_width = 0;
-*  int my_image_height = 0;
-*  GLuint my_image_texture = 0;
-*  bool ret = LoadTextureFromFile("./system_assets/MyImage01.jpg", &my_image_texture, &my_image_width, &my_image_height);
-*  IM_ASSERT(ret);
-*/
-    // logo image
-
-    int logo_width = 0;
-    int logo_height = 0;
-    GLuint logo_texture = 0;
-    bool LogoImage = LoadTextureFromFile("./system_assets/logos/Logo.png", &logo_texture, &logo_width, &logo_height);
-    IM_ASSERT(LogoImage);
 
     static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
