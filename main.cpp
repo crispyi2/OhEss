@@ -171,6 +171,12 @@ GLuint logo_texture = 0;
 bool LogoImage = LoadTextureFromFile("system_assets/logos/logo.png", &logo_texture, &logo_width, &logo_height);
 IM_ASSERT(LogoImage);
 
+int welcome_to_width = 0;
+int welcome_to_height = 0;
+GLuint welcome_to_texture = 0;
+bool WelcomeTo = LoadTextureFromFile("system_assets/logos/welcome_to.png", &welcome_to_texture, &welcome_to_width, &welcome_to_height);
+IM_ASSERT(WelcomeTo);
+
 /**\
 * test image
 *
@@ -252,11 +258,9 @@ IM_ASSERT(LogoImage);
     if (show_welcome_window)
     {
         ImGui::Begin("Welcome");
-            ImGui::Text("pointer = %p", logo_texture);
-            ImGui::Text("size = %d x %d", logo_width, logo_height);
-            ImGui::Text("Welcome To");
-            ImGui::SameLine();
-            ImGui::Image((void*)(intptr_t)logo_texture, ImVec2(logo_width, logo_height));
+                ImGui::Image((void*)(intptr_t)welcome_to_texture, ImVec2(welcome_to_width / 1.6, welcome_to_height / 1.6));
+                    ImGui::SameLine();
+                ImGui::Image((void*)(intptr_t)logo_texture, ImVec2(logo_width / 1.4, logo_height / 1.44));
             ImGui::Separator();
         ImGui::End();
     }
