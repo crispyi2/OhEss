@@ -18,7 +18,7 @@ CXX = em++
 WEB_DIR = build
 EXE = $(WEB_DIR)/OhEss.html
 IMGUI_DIR = ./imgui
-SOURCES = ./*.cpp
+SOURCES = ./main.cpp
 SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
 SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
 OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
@@ -47,7 +47,7 @@ ifeq ($(USE_FILE_SYSTEM), 0)
 EMS += -s NO_FILESYSTEM=1 -DIMGUI_DISABLE_FILE_FUNCTIONS
 endif
 ifeq ($(USE_FILE_SYSTEM), 1)
-LDFLAGS += --no-heap-copy --preload-file $(IMGUI_DIR)/misc/fonts@/fonts --preload-file system_assets@/system_assets
+LDFLAGS += --no-heap-copy --preload-file $(IMGUI_DIR)/misc/fonts@/fonts --preload-file system_assets@/system_assets --preload-file system_assets/logos@/logos
 endif
 
 ##---------------------------------------------------------------------

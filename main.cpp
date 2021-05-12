@@ -14,7 +14,6 @@
 #include <emscripten.h>
 #include <SDL.h>
 #include <SDL_opengles2.h>
-#include "system_functions.h"
 
 // Emscripten requires to have full control over the main loop. We're going to store our SDL book-keeping variables globally.
 // Having a single function that acts as a loop prevents us to store state in the stack of said function. So we need some location for this.
@@ -71,6 +70,14 @@ int main(int, char**)
         printf("Error: %s\n", SDL_GetError());
         return -1;
     }
+
+    /**\
+    * Poll and handle events (inputs, window resize, etc.)
+    * You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
+    * - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
+    * - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
+    * Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
+    \*/
 
     // For the browser using Emscripten, we are going to use WebGL1 with GL ES2. See the Makefile. for requirement details.
     // It is very likely the generated file won't work in many browsers. Firefox is the only sure bet, but I have successfully
@@ -148,14 +155,51 @@ static void main_loop(void* arg)
     static bool show_demo_window = false;
     static bool show_another_window = false;
     static bool show_welcome_window = true;
-
     static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    // Poll and handle events (inputs, window resize, etc.)
-    // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
-    // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
-    // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
-    // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
+/**\
+* Images
+\*/
+
+/**\
+* logo image
+\*/
+
+int logo_width = 0;
+int logo_height = 0;
+GLuint logo_texture = 0;
+bool LogoImage = LoadTextureFromFile("system_assets/logos/logo.png", &logo_texture, &logo_width, &logo_height);
+IM_ASSERT(LogoImage);
+
+/**\
+* test image
+*
+* int my_image_width = 0;
+* int my_image_height = 0;
+* GLuint my_image_texture = 0;
+* bool ret = LoadTextureFromFile("./system_assets/MyImage01.jpg", &my_image_texture, &my_image_width, &my_image_height);
+* IM_ASSERT(ret);
+\*/
+
+/**\
+* Audio
+\*/
+
+/***\
+** Music
+\**/
+
+/***\
+** SFX
+\**/
+
+    /**\
+    * Poll and handle events (inputs, window resize, etc.)
+    * You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
+    * - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
+    * - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application.
+    * Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
+    \*/
     SDL_Event event;
     while (SDL_PollEvent(&event))
     {
@@ -210,7 +254,10 @@ static void main_loop(void* arg)
         ImGui::Begin("Welcome");
             ImGui::Text("pointer = %p", logo_texture);
             ImGui::Text("size = %d x %d", logo_width, logo_height);
+            ImGui::Text("Welcome To");
+            ImGui::SameLine();
             ImGui::Image((void*)(intptr_t)logo_texture, ImVec2(logo_width, logo_height));
+            ImGui::Separator();
         ImGui::End();
     }
 
