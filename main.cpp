@@ -151,11 +151,26 @@ static void main_loop(void* arg)
     ImGuiIO& io = ImGui::GetIO();
     ImGuiStyle& style = ImGui::GetStyle();
     IM_UNUSED(arg); // We can pass this argument as the second parameter of emscripten_set_main_loop_arg(), but we don't use that.
+    
+    /**\
+    * I/O Config
+    \*/
+
+    io.ConfigWindowsMoveFromTitleBarOnly = true;
+
+    /**\
+    * Styling
+    \*/
+    
     style.WindowTitleAlign = ImVec2(0.50, 0.50);
+
+    const float ItemSpacing = ImGui::GetStyle().ItemSpacing.x;
+
     // Our state (make them static = more or less global) as a convenience to keep the example terse.
     static bool show_demo_window = false;
     static bool show_another_window = false;
     static bool show_welcome_window = true;
+    static bool dpm = true;
     static ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
 /**\
@@ -268,7 +283,7 @@ IM_ASSERT(WelcomeTo);
             ImGui::Separator();
             ImGui::Text("What Can OhEss Do");
             ImGui::Text("(Well not much now but alot is bing planned)");
-            if (ImGui::BeginChild("wcoed_container"))
+            if (ImGui::BeginChild("wcoed"))
             {
                     if (ImGui::BeginTabBar("wcoed_tab_bar"))
                     {
@@ -280,6 +295,30 @@ IM_ASSERT(WelcomeTo);
                         }
                         if (ImGui::BeginTabItem("Software & Package Management"))
                         {
+                            if (ImGui::BeginChild("software: Default Package Manager", ImVec2(400, 400), true))
+                            {
+                                ImGui::BeginChildFrame(dpm, ImVec2(0, 23));
+                                    ImGui::Text("");
+                                    ImGui::SameLine((ImGui::GetWindowWidth() / 2.9) - (ItemSpacing / 2.9));
+                                    ImGui::Text("Default Package Manager:");
+                                ImGui::EndChild();
+                                ImGui::Text("");
+                                ImGui::SameLine((ImGui::GetWindowWidth() / 2.8) - (ItemSpacing / 2.8));
+                                if(ImGui::Button("Screenshots"))
+                                {
+
+                                }
+                                
+                                ImGui::Button("Capabilities");
+                            }
+                            ImGui::EndChild();
+
+                            if (ImGui::BeginChild("software: Application Database", ImVec2(100, 100), true))
+                            {
+
+                            }
+                            ImGui::EndChild();
+
                             ImGui::Text("Default Package Manager:");
                             ImGui::Text("-  Sweet Packages");
                             ImGui::EndTabItem();
