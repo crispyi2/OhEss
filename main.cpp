@@ -151,7 +151,7 @@ static void main_loop(void* arg)
     ImGuiIO& io = ImGui::GetIO();
     ImGuiStyle& style = ImGui::GetStyle();
     IM_UNUSED(arg); // We can pass this argument as the second parameter of emscripten_set_main_loop_arg(), but we don't use that.
-
+    style.WindowTitleAlign = ImVec2(0.50, 0.50);
     // Our state (make them static = more or less global) as a convenience to keep the example terse.
     static bool show_demo_window = false;
     static bool show_another_window = false;
