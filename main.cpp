@@ -15,6 +15,11 @@
 #include <SDL.h>
 #include <SDL_opengles2.h>
 
+namespace {
+  const char* Wrap_SDL_GetClipboardText(void*) { return SDL_GetClipboardText(); }
+  void Wrap_SDL_SetClipboardText(void*, const char* s) { SDL_SetClipboardText(s); }
+}
+
 // Emscripten requires to have full control over the main loop. We're going to store our SDL book-keeping variables globally.
 // Having a single function that acts as a loop prevents us to store state in the stack of said function. So we need some location for this.
 SDL_Window*     g_Window = NULL;
@@ -150,6 +155,9 @@ static void main_loop(void* arg)
 {
     ImGuiIO& io = ImGui::GetIO();
 
+    io.SetClipboardTextFn = Wrap_SDL_SetClipboardText;
+    io.GetClipboardTextFn = Wrap_SDL_GetClipboardText;
+    io.ClipboardUserData = g_Window;
 
     ImGuiStyle& style = ImGui::GetStyle();
 
