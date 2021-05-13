@@ -298,12 +298,8 @@ IM_ASSERT(WelcomeTo);
                             if (ImGui::BeginChild("software: Default Package Manager", ImVec2(400, 400), true))
                             {
                                 ImGui::BeginChildFrame(dpm, ImVec2(0, 23));
-                                    ImGui::Text("");
-                                    ImGui::SameLine((ImGui::GetWindowWidth() / 2.9) - (ItemSpacing / 2.9));
                                     ImGui::Text("Default Package Manager:");
                                 ImGui::EndChild();
-                                ImGui::Text("");
-                                ImGui::SameLine((ImGui::GetWindowWidth() / 2.8) - (ItemSpacing / 2.8));
                                 if(ImGui::Button("Screenshots"))
                                 {
 
@@ -344,6 +340,20 @@ IM_ASSERT(WelcomeTo);
         }
     }
     ImGui::EndMainMenuBar();
+
+    ImGui::Begin("Task Bar", NULL, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+        ImGui::BeginChild("PinnedAppsContainer", ImVec2(100, 50), true);
+
+        ImGui::EndChild();
+        ImGui::SameLine();
+        ImGui::BeginChild("OpenAppsContainer", ImVec2(100, 50), true);
+
+        ImGui::EndChild();
+        ImGui::SameLine();
+        ImGui::BeginChild("MinimizedAppsContainer", ImVec2(100, 50), true);
+
+        ImGui::EndChild();
+    ImGui::End();
 
     // Rendering
     ImGui::Render();
