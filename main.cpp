@@ -257,11 +257,25 @@ IM_ASSERT(WelcomeTo);
 
     if (show_welcome_window)
     {
+        ImGui::SetNextWindowPos(ImVec2(io.DisplaySize.x * 0.5f, io.DisplaySize.y * 0.5f), ImGuiCond_FirstUseEver, ImVec2(0.5f,0.5f));
+        ImGui::SetNextWindowSize(ImVec2(800, 600), ImGuiCond_FirstUseEver);
         ImGui::Begin("Welcome");
-                ImGui::Image((void*)(intptr_t)welcome_to_texture, ImVec2(welcome_to_width / 1.6, welcome_to_height / 1.6));
+                    ImGui::Image((void*)(intptr_t)welcome_to_texture, ImVec2(welcome_to_width / 1.6, welcome_to_height / 1.6));
                     ImGui::SameLine();
-                ImGui::Image((void*)(intptr_t)logo_texture, ImVec2(logo_width / 1.4, logo_height / 1.44));
+                    ImGui::Image((void*)(intptr_t)logo_texture, ImVec2(logo_width / 1.4, logo_height / 1.44));
             ImGui::Separator();
+            ImGui::Text("What Can OhEss Do");
+            ImGui::Text("(Well not much now but alot is bing planned)");
+            ImGui::BeginChild("wcoed");
+                    ImGui::BeginTabBar("wcoed_tab_bar");
+                        ImGui::BeginTabItem("Productivity", true);
+                            
+                        ImGui::EndTabItem();
+                        ImGui::BeginTabItem();
+
+                        ImGui::EndTabItem();
+                    ImGui::EndTabBar();
+            ImGui::EndChild();
         ImGui::End();
     }
 
