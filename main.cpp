@@ -149,6 +149,7 @@ int main(int, char**)
 static void main_loop(void* arg)
 {
     ImGuiIO& io = ImGui::GetIO();
+    ImGuiStyle& style = ImGui::GetStyle();
     IM_UNUSED(arg); // We can pass this argument as the second parameter of emscripten_set_main_loop_arg(), but we don't use that.
 
     // Our state (make them static = more or less global) as a convenience to keep the example terse.
@@ -258,23 +259,40 @@ IM_ASSERT(WelcomeTo);
     if (show_welcome_window)
     {
         ImGui::SetNextWindowPos(ImVec2(io.DisplaySize.x * 0.5f, io.DisplaySize.y * 0.5f), ImGuiCond_FirstUseEver, ImVec2(0.5f,0.5f));
-        ImGui::SetNextWindowSize(ImVec2(800, 600), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowSize(ImVec2(900, 600), ImGuiCond_FirstUseEver);
         ImGui::Begin("Welcome");
-                    ImGui::Image((void*)(intptr_t)welcome_to_texture, ImVec2(welcome_to_width / 1.6, welcome_to_height / 1.6));
-                    ImGui::SameLine();
-                    ImGui::Image((void*)(intptr_t)logo_texture, ImVec2(logo_width / 1.4, logo_height / 1.44));
+            
+            ImGui::Image((void*)(intptr_t)welcome_to_texture, ImVec2(welcome_to_width / 1.6, welcome_to_height / 1.6));
+            ImGui::SameLine();
+            ImGui::Image((void*)(intptr_t)logo_texture, ImVec2(logo_width / 1.4, logo_height / 1.44));
             ImGui::Separator();
             ImGui::Text("What Can OhEss Do");
             ImGui::Text("(Well not much now but alot is bing planned)");
-            ImGui::BeginChild("wcoed");
-                    ImGui::BeginTabBar("wcoed_tab_bar");
-                        ImGui::BeginTabItem("Productivity", true);
-                            
-                        ImGui::EndTabItem();
-                        ImGui::BeginTabItem();
-
-                        ImGui::EndTabItem();
-                    ImGui::EndTabBar();
+            if (ImGui::BeginChild("wcoed_container"))
+            {
+                    if (ImGui::BeginTabBar("wcoed_tab_bar"))
+                    {
+                        if (ImGui::BeginTabItem("Productivity"))
+                        {
+                            ImGui::Text("Straight answer...");
+                            ImGui::Text("Dont even bother with productivity until it's finished");
+                            ImGui::EndTabItem();
+                        }
+                        if (ImGui::BeginTabItem("Software & Package Management"))
+                        {
+                            ImGui::Text("Default Package Manager:");
+                            ImGui::Text("-  Sweet Packages");
+                            ImGui::EndTabItem();
+                        }
+                        if (ImGui::BeginTabItem("CustomizeAbility"))
+                        {
+                            ImGui::Text("Default Package Manager:");
+                            ImGui::Text("-  Sweet Packages");
+                            ImGui::EndTabItem();
+                        }
+                    }
+                ImGui::EndTabBar();
+            }
             ImGui::EndChild();
         ImGui::End();
     }
