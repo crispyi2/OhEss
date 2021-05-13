@@ -149,7 +149,16 @@ int main(int, char**)
 static void main_loop(void* arg)
 {
     ImGuiIO& io = ImGui::GetIO();
+
+
     ImGuiStyle& style = ImGui::GetStyle();
+
+    style.WindowRounding = 6.0f;
+    style.WindowBorderSize = 0.0f;
+    style.PopupBorderSize = 0.0f;
+    style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+    style.Colors[ImGuiCol_FrameBg] = ImVec4(0.277f, 0.160f, 0.480f, 0.540f);
+
     IM_UNUSED(arg); // We can pass this argument as the second parameter of emscripten_set_main_loop_arg(), but we don't use that.
     
     /**\
@@ -341,6 +350,7 @@ IM_ASSERT(WelcomeTo);
     }
     ImGui::EndMainMenuBar();
 
+    ImGui::SetNextWindowPos(ImVec2(io.DisplaySize.x * 0.5f, io.DisplaySize.y * 0.94f), ImGuiCond_FirstUseEver, ImVec2(0.5f,0.5f));
     ImGui::Begin("Task Bar", NULL, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
         ImGui::BeginChild("PinnedAppsContainer", ImVec2(100, 50), true);
 
