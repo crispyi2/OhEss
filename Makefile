@@ -1,93 +1,125 @@
 #
-# Makefile to use with emscripten
-# See https://emscripten.org/docs/getting_started/downloads.html
-# for installation instructions.
+# Cross Platform Makefile
+# Compatible with MSYS2/MINGW, Ubuntu 14.04.1 and Mac OS X
 #
-# This Makefile assumes you have loaded emscripten's environment.
-# (On Windows, you may need to execute emsdk_env.bat or encmdprompt.bat ahead)
+# You will need GLFW (http://www.glfw.org):
+# Linux:
+#   apt-get install libglfw-dev
+# Mac OS X:
+#   brew install glfw
+# MSYS2:
+#   pacman -S --noconfirm --needed mingw-w64-x86_64-toolchain mingw-w64-x86_64-glfw
 #
-# Running `make` will produce three files:
-#  - web/index.html
-#  - web/index.js
-#  - web/index.wasm
-#
-# All three are needed to run the demo.
 
-CC = emcc
-CXX = em++
-WEB_DIR = build
-EXE = $(WEB_DIR)/OhEss.html
+#CXX = g++
+#CXX = clang++
+
+EXE = OhEss
 IMGUI_DIR = ./imgui
-SOURCES = ./main.cpp
+SOURCES = main.cpp
 SOURCES += $(IMGUI_DIR)/imgui.cpp $(IMGUI_DIR)/imgui_demo.cpp $(IMGUI_DIR)/imgui_draw.cpp $(IMGUI_DIR)/imgui_tables.cpp $(IMGUI_DIR)/imgui_widgets.cpp
-SOURCES += $(IMGUI_DIR)/backends/imgui_impl_sdl.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
+SOURCES += $(IMGUI_DIR)/backends/imgui_impl_glfw.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
 OBJS = $(addsuffix .o, $(basename $(notdir $(SOURCES))))
 UNAME_S := $(shell uname -s)
+LINUX_GL_LIBS = -lGL
+
+CXXFLAGS = -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends
+CXXFLAGS += -g -Wall -Wformat
+LIBS =
 
 ##---------------------------------------------------------------------
-## EMSCRIPTEN OPTIONS
+## OPENGL LOADER / OPENGL ES
 ##---------------------------------------------------------------------
 
-EMS += -s USE_SDL=2 -s WASM=1
-EMS += -s ALLOW_MEMORY_GROWTH=1
-EMS += -s DISABLE_EXCEPTION_CATCHING=1 -s NO_EXIT_RUNTIME=0
-EMS += -s ASSERTIONS=1
-EMS += -lidbfs.js
+## See below for OpenGL ES option (no loader required) - comment out
+## the following if you want to use OpenGL ES instead of Desktop GL.
 
-# Uncomment next line to fix possible rendering bugs with Emscripten version older then 1.39.0 (https://github.com/ocornut/imgui/issues/2877)
-#EMS += -s BINARYEN_TRAP_MODE=clamp
-#EMS += -s SAFE_HEAP=1    ## Adds overhead
+## Using OpenGL loader: gl3w [default]
+SOURCES += $(IMGUI_DIR)/examples/libs/gl3w/GL/gl3w.c
+CXXFLAGS += -I$(IMGUI_DIR)/examples/libs/gl3w -DIMGUI_IMPL_OPENGL_LOADER_GL3W
 
-# Emscripten allows preloading a file or folder to be accessible at runtime.
-# The Makefile for this example project suggests embedding the misc/fonts/ folder into our application, it will then be accessible as "/fonts"
-# See documentation for more details: https://emscripten.org/docs/porting/files/packaging_files.html
-# (Default value is 0. Set to 1 to enable file-system and include the misc/fonts/ folder as part of the build.)
-USE_FILE_SYSTEM ?= 1
-ifeq ($(USE_FILE_SYSTEM), 0)
-EMS += -s NO_FILESYSTEM=1 -DIMGUI_DISABLE_FILE_FUNCTIONS
+## Using OpenGL loader: glew
+## (This assumes a system-wide installation)
+# CXXFLAGS += -DIMGUI_IMPL_OPENGL_LOADER_GLEW
+# LIBS += -lGLEW
+
+## Using OpenGL loader: glad
+# SOURCES += ../libs/glad/src/glad.c
+# CXXFLAGS += -I../libs/glad/include -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+
+## Using OpenGL loader: glad2
+# SOURCES += ../libs/glad/src/gl.c
+# CXXFLAGS += -I../libs/glad/include -DIMGUI_IMPL_OPENGL_LOADER_GLAD2
+
+## Using OpenGL loader: glbinding
+## This assumes a system-wide installation
+## of either version 3.0.0 (or newer)
+# CXXFLAGS += -DIMGUI_IMPL_OPENGL_LOADER_GLBINDING3
+# LIBS += -lglbinding
+## or the older version 2.x
+# CXXFLAGS += -DIMGUI_IMPL_OPENGL_LOADER_GLBINDING2
+# LIBS += -lglbinding
+
+## Using OpenGL ES, no loader required
+## This assumes a GL ES library available in the system, e.g. libGLESv2.so
+# CXXFLAGS += -DIMGUI_IMPL_OPENGL_ES2
+# LINUX_GL_LIBS = -lGLESv2
+
+##---------------------------------------------------------------------
+## BUILD FLAGS PER PLATFORM
+##---------------------------------------------------------------------
+
+ifeq ($(UNAME_S), Linux) #LINUX
+	ECHO_MESSAGE = "Linux"
+	LIBS += $(LINUX_GL_LIBS) `pkg-config --static --libs glfw3`
+
+	CXXFLAGS += `pkg-config --cflags glfw3`
+	CFLAGS = $(CXXFLAGS)
 endif
-ifeq ($(USE_FILE_SYSTEM), 1)
-LDFLAGS += --no-heap-copy --preload-file $(IMGUI_DIR)/misc/fonts@/fonts --preload-file system_assets@/system_assets --preload-file system_assets/logos@/logos
+
+ifeq ($(UNAME_S), Darwin) #APPLE
+	ECHO_MESSAGE = "Mac OS X"
+	LIBS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+	LIBS += -L/usr/local/lib -L/opt/local/lib -L/opt/homebrew/lib
+	#LIBS += -lglfw3
+	LIBS += -lglfw
+
+	CXXFLAGS += -I/usr/local/include -I/opt/local/include -I/opt/homebrew/include
+	CFLAGS = $(CXXFLAGS)
 endif
 
-##---------------------------------------------------------------------
-## FINAL BUILD FLAGS
-##---------------------------------------------------------------------
+ifeq ($(OS), Windows_NT)
+	ECHO_MESSAGE = "MinGW"
+	LIBS += -lglfw3 -lgdi32 -lopengl32 -limm32
 
-CPPFLAGS = -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends
-#CPPFLAGS += -g
-CPPFLAGS += -Wall -Wformat -Os
-CPPFLAGS += $(EMS)
-LIBS += $(EMS)
-LDFLAGS += --emrun --shell-file shell_minimal.html
+	CXXFLAGS += `pkg-config --cflags glfw3`
+	CFLAGS = $(CXXFLAGS)
+endif
 
 ##---------------------------------------------------------------------
 ## BUILD RULES
 ##---------------------------------------------------------------------
 
 %.o:%.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 %.o:$(IMGUI_DIR)/%.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 %.o:$(IMGUI_DIR)/backends/%.cpp
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-%.o:../libs/gl3w/GL/%.c
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+%.o:$(IMGUI_DIR)/examples/libs/gl3w/GL/%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+%.o:$(IMGUI_DIR)/examples/libs/glad/src/%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 all: $(EXE)
-	@echo Build complete for $(EXE)
+	@echo Build complete for $(ECHO_MESSAGE)
 
-$(WEB_DIR):
-	mkdir $@
-
-serve: all
-	emrun $(WEB_DIR)/OhEss.html --no_browser
-
-$(EXE): $(OBJS) $(WEB_DIR)
-	$(CXX) -o $@ $(OBJS) $(LIBS) $(LDFLAGS)
+$(EXE): $(OBJS)
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
 
 clean:
-	rm -rf $(OBJS) $(WEB_DIR)
+	rm -f $(EXE) $(OBJS)
