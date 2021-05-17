@@ -145,6 +145,7 @@ int main(int, char**)
     // Our state
     bool show_demo_window = true;
     bool show_another_window = false;
+    bool show_sweet_term = true;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // Main loop
@@ -161,6 +162,17 @@ int main(int, char**)
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
+
+        if (show_sweet_term)
+        {
+            ImGui::Begin("Sweet Terminal");
+                ImGui::BeginChild("Terminal");
+                    static char cmd_input_txt[128] = "";
+
+                    ImGui::InputText("Type Help for a list of commands", cmd_input_txt, 50, ImGuiInputTextFlags_None, NULL);
+                ImGui::EndChild();
+            ImGui::End();
+        }
 
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
